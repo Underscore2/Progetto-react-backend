@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "4430bdc9-62e9-49cb-a3c1-bebc4a3852dc",
+		"name": "Spacejim-Signup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"username\":\"Postman\",\r\n \"email\":\"Postman@spacejim.com\",\r\n \"password\":\"Postman1!\",\r\n \"agreement\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3001/auth/signup",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3001",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
