@@ -1,12 +1,11 @@
+require("dotenv").config();
 const express = require('express');
 const cors = require ('cors');
 
 const app = express();
 
-let corsOptions = {
-    origin: "http://localhost:8081"
-};
-app.use(cors(corsOptions));
+
+app.use(cors());
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -46,8 +45,8 @@ db.sequelize.sync()
 require('./app/routes/auth.routes')(app)
 
 // set port, listen for requests
-app.listen(3001,()=>{
-    console.log("Server is listening on port 3001")
+app.listen(process.env.PORT,()=>{
+    console.log(`Server is listening on port ${process.env.PORT}`)
 });
 
 
