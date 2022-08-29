@@ -1,6 +1,7 @@
 const config = require("../config/db.config");
 
 const Sequelize = require("sequelize");
+
 const sequelize = new Sequelize(
     config.DB,
     config.USER,
@@ -22,6 +23,7 @@ const sequelize = new Sequelize(
 
 const db={};
 db.Sequelize = Sequelize;
+
 db.sequelize = sequelize;
 
 db.user = require("./users.model.js")(sequelize,Sequelize);
