@@ -38,24 +38,10 @@ userExist=(req,res,next)=>{
             ).catch(err=>console.log(err))
 }
 
-matchPassword=(req,res,next)=>{
-        user.findOne({
-                where:{
-                    email:req.body.email,
-                    password:req.body.password
-                }
-            }).then(data=>{if(data){next()}
-            else{{res.status(400).send({message:"AUTH1.2 - Failed"})}}})
-        .catch(err=>{
-            res.status(400);
-            console.log(err)
-        })
-}
 
 const authJwt = {
     verifyToken: verifyToken,
     userExist: userExist,
-    matchPassword: matchPassword
 };
 
 module.exports = authJwt;

@@ -14,7 +14,7 @@ exports.signup = (req, res) => {
       isEnabled: "Y",
     })
       .then(user => {
-          if (req.body.roles){
+       /*    if (req.body.roles){
               Role.findAll({
                   where: {
                       name: {
@@ -31,50 +31,32 @@ exports.signup = (req, res) => {
               user.setRoles([1]).then(() => {
                   res.send({message: "User was registered successfully!" })
               })
-          }
+          } */
+          res.status(200).send(user)
       })
       .catch(err => {
           res.status(500).send({message: err.message});
       });
 };
 
-exports.signin = (req, res) => {
-  User.findOne({
-      where: { email: req.body.email },
-  })
-      .then(data => {
-            if (!data) {
-                return res.status(404).send({ message: "Email Not found." });
-            }
-
-            let passwordIsValid = bcrypt.compareSync(
-                req.body.password,
-                user.password
-            );
-
-            if (!passwordIsValid) {
-                return res.status(401).send({
-                    accessToken: null,
-                    message: "Invalid Password!"
-                });
-            }
-
-            const token = jwt.sign(
-                { email: req.body.email },
-                config.secret,
-                { expiresIn: 86400,}
-            );
-            res.status(200).send({
-                username: data.username,
-                email: data.email,
-                authorized: true,
-                token: token,
-            });
-      })
-      .catch((err) =>{
-          res.status(500).send({message: err.message});
-          console.log(err.title);
-      });
+exports.signin = async (req, res) => {
+    const utente = await User.findOne({where: { email: req.body.email }})
+    if(utente && await bcrypt.compare(req.body.password,utente.password)){
+     
+    const token = jwt.sign(
+        { email: req.body.email },
+        config.secret,
+        { expiresIn: 86400,}
+    );
+    res.status(200).send({
+        username: utente.username,
+        email: utente.email,
+        authorized: true,
+        token: token,
+    });
+}else{
+    res.status(400).send({"Errore":"402"})
+}
 
   console.log(`[SERVER]: ${req.body.email} Ha appena effettuato l'accesso`);
 };

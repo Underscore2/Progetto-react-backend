@@ -26,7 +26,6 @@ module.exports = function (app){
     app.post('/auth/signin',
         [
             regexSignin.userExist,
-            regexSignin.matchPassword
         ],
         controller.signin
     );

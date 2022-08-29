@@ -1,7 +1,7 @@
 module.exports={
     HOST: 'localhost',
     USER: 'root',
-    PASSWORD: 'rootMysql84@',
+    PASSWORD: 'root',
     DB:'progettoreact',
     dialect:'mysql',
     pool:{
