@@ -16,6 +16,7 @@ exports.signup = (req, res) => {
       .then(user => {
         const token = jwt.sign(
             { email: req.body.email },
+            config.secret,
             { expiresIn: 86400,}
         );
           res.status(200).send({user:user, token: token})
