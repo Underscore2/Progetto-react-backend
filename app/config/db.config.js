@@ -1,7 +1,8 @@
+const dotenv = require ("dotenv").config()
 module.exports={
     HOST: 'localhost',
     USER: 'root',
-    PASSWORD: 'root',
+    PASSWORD: process.env.DB_PASSWORD,
     DB:'progettoreact',
     dialect:'mysql',
     pool:{
