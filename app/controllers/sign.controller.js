@@ -14,25 +14,11 @@ exports.signup = (req, res) => {
       isEnabled: "Y",
     })
       .then(user => {
-       /*    if (req.body.roles){
-              Role.findAll({
-                  where: {
-                      name: {
-                          [Op.or]: req.body.roles
-                      }
-                  }
-              }).then(roles => {
-                  user.setRoles(roles).then(() => {
-                      res.send({message: "User was registered successfully!" })
-                  });
-              });
-          } else {
-              // user role = 1
-              user.setRoles([1]).then(() => {
-                  res.send({message: "User was registered successfully!" })
-              })
-          } */
-          res.status(200).send(user)
+        const token = jwt.sign(
+            { email: req.body.email },
+            { expiresIn: 86400,}
+        );
+          res.status(200).send({user:user, token: token})
       })
       .catch(err => {
           res.status(500).send({message: err.message});
