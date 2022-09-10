@@ -1,4 +1,4 @@
-# spacejim-backend
+# progetto-react-backend
 /*ERRORI CONTROLLI SIGN-UP*/
 
 // SIGN 1: Non sono arrivati i dati richiesti.
@@ -15,9 +15,3 @@
 // AUTH 1: (Generico) Non c'è stato riscontro nel DB.
 // AUTH 1.1: L'email non è presente nel DB.
 // AUTH 1.2: La password non corrisponde all'utente nel DB.
-
-/*ERRORI CONTROLLI INVIO EMAIL*/
-
-// EMAIL 1: Non sono arrivati i dati richiesti.
-// EMAIL 1.2: Alcuni campi sono arrivati come stringhe vuote.
-// EMAIL 1.3: L'email non rispetta il regex.
